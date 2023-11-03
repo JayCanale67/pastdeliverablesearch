@@ -71,7 +71,9 @@ project_arr.forEach((element) => {
   var label = document.createElement("label");
   label.htmlFor = element;
   label.className = "mr-3 d-inline";
-  label.appendChild(document.createTextNode('P37-' + (100 + parseInt(element))));
+  label.appendChild(
+    document.createTextNode("P37-" + (100 + parseInt(element)))
+  );
   var br = document.createElement("br");
   projectCheckboxList.appendChild(checkbox);
   projectCheckboxList.appendChild(label);
@@ -91,8 +93,7 @@ function onProjectChange() {
       data["PastDeliverablesList"].forEach((element) => {
         var category = element["Category"];
         var id = project_checkboxes[i].value;
-        if (
-          parseInt(element["Project"]) === parseInt(id)) {
+        if (parseInt(element["Project"]) === parseInt(id)) {
           if (!category_arr.includes(element["Category"])) {
             category_arr.push(element["Category"]);
           }
@@ -189,13 +190,14 @@ function generateTable(rows) {
   tableContainer.appendChild(table);
   let thead = table.createTHead();
   let row = thead.insertRow();
-  let keys = ["Name", "Category", "PID", "Date", "Public/Private"];
+  let keys = ["Deliverable Name", "Category", "PID", "Date", "Public/Private"];
   let widths = ["60%", "10%", "10%", "10%", "10%"];
   for (let i = 0; i < keys.length; i++) {
     let th = document.createElement("th");
     th.style.width = widths[i];
     th.setAttribute("onClick", "sortTable(" + i + ")");
     th.style.cursor = "pointer";
+    //th.style.textAlign = 'center';
     let text = document.createTextNode(keys[i]);
     th.appendChild(text);
     row.appendChild(th);
